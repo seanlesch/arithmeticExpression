@@ -1,18 +1,12 @@
 package com;
 
-public class Value extends Expression
+public class Value extends Expr
 {
     int number;
 
-    Value(){
-        this.number = 0;
-    }
+    Value(int aNumber){this.number = aNumber;}
 
-    Value(int aNumber){
-        this.number = aNumber;
-    }
+    String print(){return Integer.toString(this.number);}
 
-    void print(){
-        System.out.print(this.number);
-    }
+    int compute(){return this.number;}
 }

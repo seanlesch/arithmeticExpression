@@ -3,8 +3,15 @@ package com;
 public class Plus extends Binary
 {
     String value = "+";
+    Expr left, right;
 
-    void print(){
-        System.out.print(value);
+    Plus(Expr left, Expr right)
+    {
+        this.left = left;
+        this.right = right;
     }
+
+    String print(){return this.value;}
+
+    int compute(){return left.compute() + right.compute();}
 }
