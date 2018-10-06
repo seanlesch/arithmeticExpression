@@ -10,21 +10,18 @@ public class Div extends Binary
         this.right = right;
     }
 
-    int compute(){
+    int compute() throws ArithmeticException{
         if(this.right.compute()==0){
-            System.out.println("Divide by zero error, no value in expression.");
-            return 0;
+            throw new ArithmeticException("Divide by zero error!");
         }
         else{
             int result = this.left.compute()%this.right.compute();
-            if(result != 0)
-            {
-                System.out.println("Integers not factors for division, no value in expression");
-                return 0;
+            if(result != 0){
+                throw new ArithmeticException("Non-integer value in result!");
             }
             return this.left.compute()/this.right.compute();
         }
     }
 
-    String print(){return this.value;}
+    String print(){return "(" + this.left.print() + this.value + this.right.print() + ")";}
 }

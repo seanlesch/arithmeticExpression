@@ -11,7 +11,7 @@ public class Plus extends Binary
         this.right = right;
     }
 
-    String print(){return this.value;}
+    String print(){return "(" + this.left.print() + this.value + this.right.print() + ")";}
 
     int compute(){return left.compute() + right.compute();}
 }

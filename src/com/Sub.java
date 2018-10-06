@@ -12,5 +12,5 @@ public class Sub extends Binary
 
     int compute(){return this.left.compute()-this.right.compute();}
 
-    String print(){return this.value;}
+    String print(){return "(" + this.left.print() + this.value + this.right.print() + ")";}
 }
