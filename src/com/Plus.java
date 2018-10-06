@@ -1,17 +1,16 @@
 package com;
+/*
+Sean Lesch, 2018
+Plus implements the behavior for computing the addition operator.
+ */
 
-public class Plus extends Binary
+public class Plus extends Operator
 {
-    String value = "+";
-    Expr left, right;
-
-    Plus(Expr left, Expr right)
-    {
+    Plus(Expr left, Expr right) {
+        this.value = "+";
         this.left = left;
         this.right = right;
     }
-
-    String print(){return "(" + this.left.print() + this.value + this.right.print() + ")";}
 
     int compute(){return left.compute() + right.compute();}
 }

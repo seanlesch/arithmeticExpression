@@ -1,5 +1,10 @@
 package com;
 
+/*
+Sean Lesch, 2018
+Value represents any integer number in the expression.
+ */
+
 public class Value extends Expr
 {
     int number;

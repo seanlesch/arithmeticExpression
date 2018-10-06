@@ -1,16 +1,15 @@
 package com;
-
-public class Mult extends Binary
+/*
+Sean Lesch, 2018
+The Mult class implements the behavior for computing the multiplication operator.
+ */
+public class Mult extends Operator
 {
-    String value = "*";
-    Expr left, right;
-
     Mult(Expr left, Expr right){
+        this.value = "*";
         this.left = left;
         this.right = right;
     }
 
     int compute(){return this.left.compute() * this.right.compute();}
-
-    String print(){return "(" + this.left.print() + this.value + this.right.print() + ")";}
 }
