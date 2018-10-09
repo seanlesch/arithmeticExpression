@@ -21,7 +21,7 @@ public class Main
             list1.add(values[i]);
         }
         List<Expr> list2 = new LinkedList<>();
-        for(int i = list1.size(); i < values.length/2; i++){
+        for(int i = list1.size(); i < values.length; i++){
             list2.add(values[i]);
         }
         buildOuter(list1, list2);
@@ -45,31 +45,47 @@ public class Main
 
     static void buildOuter(List<Expr> list1, List<Expr> list2){
         for(int i = 0; i < 4; i ++) {
-            Expr finalExpr = new Plus(build(list1, i), build(list2, i));
-            int result = finalExpr.compute();
-            if ((0 <= result) && (result <= 9)) {
-                System.out.println(finalExpr.print() + " = " + result);
+            try {
+                Expr finalExpr = new Plus(build(list1, i), build(list2, i));
+                int result = finalExpr.compute();
+                if ((0 <= result) && (result <= 9)) {
+                    System.out.println(finalExpr.print() + " = " + result);
+                }
+            }catch(ArithmeticException e){
+                System.out.println(e + " One expression of interest removed.");
             }
         }
         for(int i = 0; i < 4; i ++) {
-            Expr finalExpr = new Sub(build(list1, i), build(list2, i));
-            int result = finalExpr.compute();
-            if((0 <= result) && (result <= 9)){
-                System.out.println(finalExpr.print() + " = " + result);
+            try {
+                Expr finalExpr = new Sub(build(list1, i), build(list2, i));
+                int result = finalExpr.compute();
+                if ((0 <= result) && (result <= 9)) {
+                    System.out.println(finalExpr.print() + " = " + result);
+                }
+            }catch(ArithmeticException e){
+                System.out.println(e + " One expression of interest removed.");
             }
         }
         for(int i = 0; i < 4; i ++) {
-            Expr finalExpr = new Mult(build(list1, i), build(list2, i));
-            int result = finalExpr.compute();
-            if((0 <= result) && (result <= 9)){
-                System.out.println(finalExpr.print() + " = " + result);
+            try {
+                Expr finalExpr = new Mult(build(list1, i), build(list2, i));
+                int result = finalExpr.compute();
+                if ((0 <= result) && (result <= 9)) {
+                    System.out.println(finalExpr.print() + " = " + result);
+                }
+            }catch(ArithmeticException e){
+                System.out.println(e + " One expression of interest removed.");
             }
         }
         for(int i = 0; i < 4; i ++) {
-            Expr finalExpr = new Div(build(list1, i), build(list2, i));
-            int result = finalExpr.compute();
-            if((0 <= result) && (result <= 9)){
-                System.out.println(finalExpr.print() + " = " + result);
+            try {
+                Expr finalExpr = new Div(build(list1, i), build(list2, i));
+                int result = finalExpr.compute();
+                if ((0 <= result) && (result <= 9)) {
+                    System.out.println(finalExpr.print() + " = " + result);
+                }
+            }catch(ArithmeticException e){
+                System.out.println(e + " One expression of interest removed.");
             }
         }
     }
@@ -100,6 +116,18 @@ public class Main
             split = new LinkedList<>();
             split.add(list.get(0));
             split.add(list.get(1));
+            for (int j = 0; j < 4; j++) {
+                expression = new Plus(build(split, opChoice), list.get(2));
+            }
+            for (int j = 0; j < 4; j++) {
+                expression = new Sub(build(split, opChoice), list.get(2));
+            }
+            for (int j = 0; j < 4; j++) {
+                expression = new Mult(build(split, opChoice), list.get(2));
+            }
+            for (int j = 0; j < 4; j++) {
+                expression = new Div(build(split, opChoice), list.get(2));
+            }
         }
 
         if(list.size() == 2) {
